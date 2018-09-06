@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div">0</div>
+</body>
+</html>
+<script>
+    //投票的效果 点击一下就能增加一票，要求不能有全局变量，利用作用域不销毁的优点实现这道题
+       var oDiv = document.getElementById("div");
+
+       function fn() {
+           var i = 0;
+           oDiv.onclick = function () {
+               i++;
+               oDiv.innerHTML = i;
+           }
+       }
+   
+       var f = fn();
+</script>

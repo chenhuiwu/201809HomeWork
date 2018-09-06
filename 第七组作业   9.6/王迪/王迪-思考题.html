@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>思考题</title>
+</head>
+<style>
+  #div{
+        border: 1px solid #ccc;
+        cursor: pointer;
+        width: 100px;
+        height:50px;
+        line-height: 50px;
+        text-align: center;
+    }
+</style>
+<body>
+	<div id="div">0</div>
+</body>
+</html>
+<script>
+  //点击一下就能增加1票，利用作用域不销毁的优点实现这道题
+  var oBox = document.getElementById('div')
+  /*function fn(){
+  	var i = 0;
+  	oBox.onclick = function(){
+  		i++;
+  		oBox.innerHTML = i;
+  	}
+  }
+  fn();*/
+  /*function fn(){
+  	var i =0;
+  	return function(){
+  		i++
+  		oBox.innerHTML = i;
+  	}
+  }
+  oBox.onclick = fn();*/
+  ~(function(){
+     var i =0;
+     oBox.onclick = function(){
+  		i++;
+  		oBox.innerHTML = i;
+  	}
+  })();
+  //思考题二
+   var i =3;
+     function fn() {
+     i *= 2;
+     return function (n) {
+     console.log(n * (++i));
+       }
+     }
+     var f = fn();
+     f(3);//21
+     fn()(3);//45
+     f(4);//64
+     fn()(3);//99
+</script>
